@@ -42,7 +42,6 @@ conn2 = sqlite3.connect('dogs.db')
 
 # Select all
 dogs = pd.read_sql("SELECT * FROM dogs;", conn2)
-print(dogs)
 
 # STEP 6
 # Replace None with your code
@@ -78,17 +77,17 @@ df_4_oldest = pd.read_sql("""SELECT name, age, breed FROM dogs ORDER BY age DESC
 conn3 = sqlite3.connect('babe_ruth.db')
 
 # Select all
-pd.read_sql("""
+babe_ruth = pd.read_sql("""
 SELECT * FROM babe_ruth_stats; """, conn3)
+print(babe_ruth)
 
 # STEP 9
 # Replace None with your code
-df_ruth_years = None
+df_ruth_years = pd.read_sql("""SELECT COUNT(year) from babe_ruth_stats""",conn3)
 
 # STEP 10
 # Replace None with your code
-df_hr_total = None
-
+df_hr_total = pd.read_sql("""SELECT SUM(HR) from babe_ruth_stats """,conn3)
 
 ##### Part 5: Grouping and Aggregation #####
 
