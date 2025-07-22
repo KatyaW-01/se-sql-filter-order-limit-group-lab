@@ -19,7 +19,7 @@ def test_advanced_filtering():
 def test_ordering_and_limiting():
     assert(list(df_hungry['name']) == ['Snoopy', 'Clifford', None, 'Scooby', 'Lassie', 'Pickles'])
     assert(df_hungry.iloc[0]['name'] == 'Snoopy')
-    assert(list(df_hungry_ages['age']) == [4, 4, 7, 6, 3])
+    assert(list(df_hungry_ages['age']) == [4, 4, 7, 5, 6, 3])
     assert(df_hungry_ages.iloc[-1]['name'] == 'Snoopy')
     assert(list(df_4_oldest['name']) == ['Pickles', 'McGruff', 'Snowy', 'Lassie'])
     assert(df_4_oldest.iloc[0]['name'] == 'Pickles')

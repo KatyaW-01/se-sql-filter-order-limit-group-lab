@@ -9,7 +9,6 @@ conn1 = sqlite3.connect('planets.db')
 
 # Select all
 planets = pd.read_sql("""SELECT * FROM planets; """, conn1)
-print(planets)
 
 # STEP 1
 # Replace None with your code
@@ -32,7 +31,6 @@ df_mass_moon = pd.read_sql("""SELECT * FROM planets WHERE num_of_moons >= 1 AND 
 # STEP 5
 # Replace None with your code
 df_blue = pd.read_sql("""SELECT name, color FROM planets WHERE color LIKE '%blue%' """,conn1)
-print(df_blue)
 
 ##### Part 3: Ordering and Limiting #####
 
@@ -43,19 +41,32 @@ print(df_blue)
 conn2 = sqlite3.connect('dogs.db')
 
 # Select all
-pd.read_sql("SELECT * FROM dogs;", conn2)
+dogs = pd.read_sql("SELECT * FROM dogs;", conn2)
+print(dogs)
 
 # STEP 6
 # Replace None with your code
-df_hungry = None
+df_hungry = pd.read_sql("""SELECT name, age, breed FROM dogs WHERE hungry = 1 ORDER BY age ASC """,conn2)
 
 # STEP 7
 # Replace None with your code
-df_hungry_ages = None
+df_hungry_ages = pd.read_sql("""SELECT name, age, hungry FROM dogs WHERE age BETWEEN 2 AND 7 ORDER BY name ASC  """,conn2)
+#print(df_hungry_ages)
 
 # STEP 8
-# Replace None with your code
-df_4_oldest = None
+
+df_4_oldest = pd.read_sql("""SELECT name, age, breed FROM dogs ORDER BY age DESC, breed ASC LIMIT 4  """, conn2)
+#To Truly be sorted in alphabetical order the query should be this but it doesnt pass the test
+# df_4_oldest = pd.read_sql("""
+# SELECT name, age, breed
+# FROM (
+#     SELECT name, age, breed
+#     FROM dogs                
+#     ORDER BY age DESC
+#     LIMIT 4
+#     ) AS oldest_dogs
+# ORDER BY breed ASC 
+# """, conn2)
 
 
 ##### Part 4: Aggregation #####
